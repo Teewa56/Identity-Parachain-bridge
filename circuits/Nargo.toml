@@ -1,0 +1,7 @@
+[package]
+name = "identity_bridge"
+type = "lib"
+authors = ["PortableID"]
+compiler_version = ">=0.31.0"
+
+[dependencies]
