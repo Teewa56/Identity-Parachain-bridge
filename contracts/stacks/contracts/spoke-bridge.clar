@@ -4,7 +4,7 @@
 (define-constant contract-owner tx-sender)
 
 ;; Errors
-(define-constant ERR-NOT-AUTHORIZED (err u100))
+(define-constant ERR-NOT-AUTHORIZED (err u100))  
 (define-constant ERR-INVALID-PROOF (err u101))
 (define-constant ERR-NOT-INITIALIZED (err u102))
 

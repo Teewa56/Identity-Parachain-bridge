@@ -58,10 +58,10 @@ Each target chain hosts a "Spoke" contract that acts as a local cache for the Hu
 
 ### 2.5 The Transport: Decentralized ZK-Prover & Relayer (Rust)
 
-A trustless network of provers and relayers maintains the bridge without requiring an m-of-n quorum.
+A trustless network of provers and relayers maintains the bridge without requiring an **m-of-n quorum**.
 
 *   **Observer:** Monitors the Parachain for state transitions and GRANDPA finality.
-*   **Prover:** Generates a **ZK-Light Client Proof** (e.g., via Succinct or Aligned) that proves the validity of the new State Root based on Polkadot’s consensus.
+*   **Prover:** Generates a **ZK-Light Client Proof** (via Succinct) that proves the validity of the new State Root based on Polkadot’s consensus.
 *   **Relayer:** Submits the ZK-Proof and the new Root to the Spoke contracts.
 
 ---
@@ -82,7 +82,6 @@ A trustless network of provers and relayers maintains the bridge without requiri
 
 ### Phase C: Verification (Cross-Chain Proof)
 
-1. A **User** wants to access a dApp on Solana using their Parachain identity.
 1.  A **User** wants to access a dApp on Solana using their Parachain identity.
 2.  The User generates a **zk-SNARK proof** locally in their wallet.
 3.  The Solana dApp calls the **Solana Spoke Contract**, passing the ZK-proof.
@@ -121,6 +120,6 @@ Issuers pay a **Minting Fee** in the Hub's native token for every identity regis
 | **M1: Hub Genesis** | Substrate Parachain with `pallet-identity-bridge` + Zombienet tests. |
 | **M2: ZK-Circuits** | Circom/Noir circuits for membership proofs and credential validation. |
 | **M3: Spoke Deployment** | Solidity, Move, and Rust contracts deployed to Testnets. |
-| **M4: Relayer V1** | Rust-based service with multi-chain signing support. |
+| **M4: Relayer** | Rust-based service with multi-chain signing support. |
 ```
 ---

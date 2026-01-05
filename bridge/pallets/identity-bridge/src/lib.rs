@@ -22,16 +22,15 @@ pub mod pallet {
 
 	#[pallet::config]
 	pub trait Config: frame_system::Config {
-		type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
 		type WeightInfo: crate::weights::WeightInfo;
 		/// The origin that can manage the whitelist of issuers and schemas.
 		type GovernanceOrigin: EnsureOrigin<Self::RuntimeOrigin>;
 		/// The currency trait for fee handling.
 		type Currency: frame_support::traits::fungible::Mutate<Self::AccountId>;
-		/// The amount of currency required to issue a new identity.
+		/// The amount of currency required to issue a new identity(constant fee)
 		#[pallet::constant]
 		type IssuanceFee: Get<BalanceOf<Self>>;
-		/// The account that receives the issuance fees (e.g., Treasury).
+		/// The account that receives the issuance fees (constant e.g., Treasury).
 		#[pallet::constant]
 		type FeeReceiver: Get<Self::AccountId>;
 	}
@@ -52,7 +51,7 @@ pub mod pallet {
 		pub expiration: Option<u64>,
 	}
 
-	/// Map of leaf index to its hash in the MMR.
+	/// Map of leaf index to its hash in the MMR(Merkle mountain range)
 	#[pallet::storage]
 	pub type MMRNodes<T: Config> = StorageMap<_, Blake2_128Concat, u64, H256>;
 
@@ -71,7 +70,7 @@ pub mod pallet {
 		IdentityIssued { did: H256, index: u64, root: H256 },
 		/// An identity has been revoked.
 		IdentityRevoked { did: H256 },
-		/// A new issuer has been whitelisted.
+		/// A new issuer has been whitelisted(Like an oragnisation )
 		IssuerAdded { issuer: T::AccountId },
 		/// A new schema has been whitelisted.
 		SchemaAdded { hash: H256 },

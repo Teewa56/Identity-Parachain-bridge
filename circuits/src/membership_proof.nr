@@ -37,6 +37,4 @@ fn test_membership() {
     let schema_hash = 0x789;
     let leaf = std::hash::pedersen_hash([did, data_hash, schema_hash]);
     
-    // Root would be constructed by the user for testing
-    // ...
 }
